@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<title>Zarev</title>
+</head>
+<body>
+<main class="app">
+  <header>
+    <div class="logo">⚡ ZAREV</div>
+    <div class="sub">Dil Motoru</div>
+  </header>
+
+  <section class="mode">
+    <button id="trBtn" class="active">Türkçe → Zarev</button>
+    <button id="zvBtn">Zarev → Türkçe</button>
+  </section>
+
+  <textarea id="input" placeholder="Metni buraya yaz veya yapıştır..."></textarea>
+
+  <div class="actions">
+    <button id="translate">ÇEVİR</button>
+    <button id="clear">TEMİZLE</button>
+  </div>
+
+  <section class="result">
+    <div class="resultHead">
+      <span>SONUÇ</span>
+      <button id="copy">KOPYALA</button>
+    </div>
+    <div id="output">Burada çeviri görünecek.</div>
+  </section>
+
+  <div class="info" id="info">Sözlük yükleniyor...</div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
