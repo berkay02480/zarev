@@ -80,11 +80,11 @@ document.getElementById("clear").onclick=()=>{input.value="";output.textContent=
 document.getElementById("copy").onclick=async()=>{await navigator.clipboard.writeText(output.textContent);};
 
 Promise.all([
-  fetch("berkay_001.csv").then(r => {
+  fetch("./berkay_001.csv").then(r => {
     if (!r.ok) throw Error("berkay_001.csv bulunamadı");
     return r.text();
   }),
-  fetch("berkay_002.csv").then(r => {
+  fetch("./berkay_002.csv").then(r => {
     if (!r.ok) throw Error("berkay_002.csv bulunamadı");
     return r.text();
   })
