@@ -79,19 +79,21 @@ document.getElementById("translate").onclick=translate;
 document.getElementById("clear").onclick=()=>{input.value="";output.textContent="Burada çeviri görünecek.";};
 document.getElementById("copy").onclick=async()=>{await navigator.clipboard.writeText(output.textContent);};
 
-Promise.all([
-  fetch("./berkay_001.csv").then(r => {
-    if (!r.ok) throw Error("berkay_001.csv bulunamadı");
-    return r.text();
-  }),
-  fetch("./berkay_002.csv").then(r => {
-    if (!r.ok) throw Error("berkay_002.csv bulunamadı");
-    return r.text();
+Promise.all(
+  Array.from({ length: 9 }, (_, i) => {
+    const num = String(i + 1).padStart(2, "0");
+
+    return fetch(`./berkay_${num}.csv?v=2`)
+      .then(r => {
+        if (!r.ok) {
+          throw new Error(`berkay_${num}.csv bulunamadı`);
+        }
+        return r.text();
+      });
   })
-])
-.then(([t1, t2]) => {
-  parseCSV(t1);
-  parseCSV(t2);
+)
+.then(files => {
+  files.forEach(text => parseCSV(text));
 
   info.textContent =
     `${Object.keys(sozluk).length.toLocaleString("tr-TR")} sözlük kaydı yüklendi.`;
